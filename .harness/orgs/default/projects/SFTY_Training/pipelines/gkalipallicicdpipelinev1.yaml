@@ -43,7 +43,7 @@ pipeline:
                     projectID: bustling-tuner-482104-a0
                     imageName: harness-image
                     tags:
-                      - v2.0
+                      - <+pipeline.sequenceId>
     - stage:
         name: CD
         identifier: CD
