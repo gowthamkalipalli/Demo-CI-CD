@@ -38,7 +38,7 @@ pipeline:
                   identifier: BuildAndPushGAR_1
                   spec:
                     connectorRef: gkalipalliGCPConnector
-                    host: us-central1-docker.pkg.dev
+                    host: us.gcr.io
                     projectID: bustling-tuner-482104-a0
                     imageName: harness-image
                     tags:
