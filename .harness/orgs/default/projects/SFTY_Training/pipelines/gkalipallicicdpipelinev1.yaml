@@ -1,0 +1,45 @@
+pipeline:
+  name: gkalipalli-ci-cd-pipeline-v1
+  identifier: gkalipallicicdpipelinev1
+  projectIdentifier: SFTY_Training
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: gowtham_nanda
+        repoName: Demo-CI-CD
+        build: <+input>
+  stages:
+    - stage:
+        name: CI
+        identifier: CI
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: false
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec:
+              size: flex
+              imageSpec:
+                imageName: ubuntu-24
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushGAR
+                  name: BuildAndPushGAR_1
+                  identifier: BuildAndPushGAR_1
+                  spec:
+                    connectorRef: gkalipalliGCPConnector
+                    host: image
+                    projectID: bustling-tuner-482104-a0
+                    imageName: harness-image
+                    tags:
+                      - v2.0
