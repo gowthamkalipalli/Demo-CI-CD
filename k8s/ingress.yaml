@@ -1,0 +1,47 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: springboot-app-ingress
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    networking.gke.io/managed-certificates: springboot-app-certificate
+    kubernetes.io/ingress.global-static-ip-name: "springboot-app-ip"
+spec:
+  defaultBackend:
+    service:
+      name: springboot-app-service
+      port:
+        number: 80
+  rules:
+  - host: "your-domain.com"  # Replace with your domain
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: springboot-app-service
+            port:
+              number: 80
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: springboot-app-service
+            port:
+              number: 80
+      - path: /actuator
+        pathType: Prefix
+        backend:
+          service:
+            name: springboot-app-service
+            port:
+              number: 80
+      - path: /swagger-ui
+        pathType: Prefix
+        backend:
+          service:
+            name: springboot-app-service
+            port:
+              number: 80
