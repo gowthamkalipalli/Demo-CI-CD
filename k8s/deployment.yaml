@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: springboot-app
-        image: springboot-gke-demo:latest
+        image: yourdockerhub/demo-app:<+pipeline.sequenceId>
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
