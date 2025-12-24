@@ -41,7 +41,7 @@ pipeline:
                     connectorRef: gkalipalliGCPConnector
                     host: us-central1-docker.pkg.dev
                     projectID: bustling-tuner-482104-a0
-                    imageName: springboot-app
+                    imageName: harness-repo/springboot-app
                     tags:
                       - <+pipeline.sequenceId>
     - stage:
