@@ -41,7 +41,7 @@ pipeline:
                     connectorRef: gkalipalliGCPConnector
                     host: us.gcr.io
                     projectID: bustling-tuner-482104-a0
-                    imageName: harness-image
+                    imageName: springboot-app
                     tags:
                       - <+pipeline.sequenceId>
     - stage:
