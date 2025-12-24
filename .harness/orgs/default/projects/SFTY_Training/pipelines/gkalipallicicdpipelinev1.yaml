@@ -44,6 +44,24 @@ pipeline:
                     imageName: harness-repo/springboot-app
                     tags:
                       - <+pipeline.sequenceId>
+              - step:
+                  type: Run
+                  name: Update k8s Manifest files
+                  identifier: Update_k8s_Manifest_files
+                  spec:
+                    shell: Sh
+                    command: "sed -i \"s|image: .*|image: us-central1-docker.pkg.dev/bustling-tuner-482104-a0/harness-repo/springboot-app:<+pipeline.sequenceId>|g\" k8s/deployment.yaml"
+                  description: This will updates K8s manifest files with new image tag..
+              - step:
+                  type: Run
+                  name: Commit updated file to Github
+                  identifier: Commit_updated_file_to_Github
+                  spec:
+                    shell: Sh
+                    command: |-
+                      git add k8s/deployment.yaml
+                      git commit -m "Update image tag to <+pipeline.sequenceId>"
+                      git push origin main
     - stage:
         name: CD
         identifier: CD
