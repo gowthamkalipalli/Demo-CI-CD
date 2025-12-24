@@ -64,7 +64,7 @@ pipeline:
 
                       git add k8s/deployment.yaml
                       git commit -m "Update image tag to <+pipeline.sequenceId>"
-                      git push origin main
+                      git push https://<+secrets.getvalue("gk_github_pat")>@github.com/gowthamkalipalli/k8s-manifests.git main
     - stage:
         name: CD
         identifier: CD
