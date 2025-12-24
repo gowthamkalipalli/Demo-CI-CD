@@ -59,9 +59,9 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      git config user.email "gowthamkalipalli@gmail.com"
-                      git config user.name "gowthamkalipalli"
+                      git config user.name "https://github.com/gowthamkalipalli"
 
+                      git init .
                       git add k8s/deployment.yaml
                       git commit -m "Update image tag to <+pipeline.sequenceId>"
                       git push https://<+secrets.getvalue("gk_github_pat")>@github.com/gowthamkalipalli/k8s-manifests.git main
