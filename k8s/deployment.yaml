@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: springboot-app
-        image: us-central1-docker.pkg.dev/bustling-tuner-482104-a0/harness-repo/springboot-app:<+pipeline.sequenceId>
+        image: us-central1-docker.pkg.dev/bustling-tuner-482104-a0/harness-repo/springboot-app:latest
 
         imagePullPolicy: Always
         ports:
