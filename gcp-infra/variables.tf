@@ -1,4 +1,4 @@
-variable "project_id" {}
+variable "project_id" { default = "gowtham-482404'}
 variable "region" { default = "us-central1" }
 variable "zone"   { default = "us-central1-a" }
 
