@@ -67,6 +67,6 @@ pipeline:
                   name: GCSUpload_1
                   identifier: GCSUpload_1
                   spec:
-                    connectorRef: gkalipalli475gcpconnector
+                    connectorRef: gk475gcplatestconnector
                     bucket: demo-gcp-artifact-bucket/Springboot.jar
                     sourcePath: /harness/target/springboot-gke-demo-1.0.0.jar
