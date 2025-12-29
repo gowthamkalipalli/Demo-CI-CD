@@ -52,10 +52,3 @@ pipeline:
                     shell: Sh
                     command: "sed -i \"s|image: .*|image: us-central1-docker.pkg.dev/bustling-tuner-482104-a0/harness-repo/springboot-app:<+pipeline.sequenceId>|g\" k8s/deployment.yaml"
                   description: This will updates K8s manifest files with new image tag..
-    - stage:
-        name: CD
-        identifier: CD
-        tags: {}
-        template:
-          templateRef: gkalpalliCICDpipeline_Demo
-          versionLabel: v1
