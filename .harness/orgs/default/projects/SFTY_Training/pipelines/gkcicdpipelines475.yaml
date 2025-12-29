@@ -10,6 +10,7 @@ pipeline:
         connectorRef: gkalipallinewgitconnector
         repoName: Demo-CI-CD
         build: <+input>
+        sparseCheckout: []
   stages:
     - stage:
         name: CI Stages
