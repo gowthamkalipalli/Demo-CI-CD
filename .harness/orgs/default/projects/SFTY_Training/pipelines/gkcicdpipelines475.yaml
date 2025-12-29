@@ -1,0 +1,58 @@
+pipeline:
+  name: gk-ci-cd-pipelines-475
+  identifier: gkcicdpipelines475
+  projectIdentifier: SFTY_Training
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: gkalipallinewgitconnector
+        repoName: Demo-CI-CD
+        build: <+input>
+  stages:
+    - stage:
+        name: CI Stages
+        identifier: CI_Stages
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: false
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec:
+              size: flex
+              imageSpec:
+                imageName: ubuntu-24
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: mvn package -DskipTests -Dsonar.java.binaries=target/classes
+              - step:
+                  type: Sonarqube
+                  name: Sonarqube_1
+                  identifier: Sonarqube_1
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      type: repository
+                      detection: auto
+                    advanced:
+                      log:
+                        level: info
+                    auth:
+                      access_token: sqa_c237ba759060346a648b0a78268396ce1f0e1cd7
+                      domain: http://34.27.136.50:9000
+                      ssl: true
