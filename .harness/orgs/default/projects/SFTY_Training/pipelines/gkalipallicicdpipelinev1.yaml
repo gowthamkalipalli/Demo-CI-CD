@@ -38,7 +38,7 @@ pipeline:
                   name: BuildAndPushGAR_1
                   identifier: BuildAndPushGAR_1
                   spec:
-                    connectorRef: gkalipalliGCPConnector
+                    connectorRef: gkalipalli475gcpconnector
                     host: us-central1-docker.pkg.dev
                     projectID: bustling-tuner-482104-a0
                     imageName: harness-repo/springboot-app
