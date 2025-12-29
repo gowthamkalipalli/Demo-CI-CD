@@ -81,4 +81,3 @@ pipeline:
                     imageName: spring-boot-app
                     tags:
                       - v1
-                    dockerfile: k8s/
