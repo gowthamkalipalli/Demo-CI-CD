@@ -70,3 +70,15 @@ pipeline:
                     connectorRef: gk475gcplatestconnector
                     bucket: demo-gcp-artifact-bucket/Springboot.jar
                     sourcePath: /harness/target/springboot-gke-demo-1.0.0.jar
+              - step:
+                  type: BuildAndPushGAR
+                  name: BuildAndPushGAR_1
+                  identifier: BuildAndPushGAR_1
+                  spec:
+                    connectorRef: gk475gcplatestconnector
+                    host: us.gcr.io
+                    projectID: gkalipalli
+                    imageName: spring-boot-app
+                    tags:
+                      - v1
+                    dockerfile: k8s/
