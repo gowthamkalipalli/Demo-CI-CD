@@ -56,3 +56,8 @@ pipeline:
                       access_token: sqa_c237ba759060346a648b0a78268396ce1f0e1cd7
                       domain: http://34.27.136.50:9000
                       ssl: true
+                    tool:
+                      java:
+                        libraries: target/*.jar
+                        binaries: target/classes
+                      project_key: harness-build
