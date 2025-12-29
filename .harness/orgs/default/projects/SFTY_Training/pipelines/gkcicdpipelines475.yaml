@@ -61,3 +61,11 @@ pipeline:
                         libraries: target/*.jar
                         binaries: target/classes
                       project_key: harness-build
+              - step:
+                  type: GCSUpload
+                  name: GCSUpload_1
+                  identifier: GCSUpload_1
+                  spec:
+                    connectorRef: gkalipalli475gcpconnector
+                    bucket: demo-gcp-artifact-bucket/Springboot.jar
+                    sourcePath: /harness/target/springboot-gke-demo-1.0.0.jar
