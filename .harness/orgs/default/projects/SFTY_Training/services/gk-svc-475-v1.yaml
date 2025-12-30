@@ -37,9 +37,9 @@ service:
                 repositoryType: docker
                 project: gkalipalli
                 region: us-central1
-                repositoryName: us.gcr.io
-                package: artifact-package
-                version: <+input>
+                repositoryName: java-app-repo
+                package: spring-boot-app
+                version: <+pipeline.sequenceId>
                 digest: ""
               type: GoogleArtifactRegistry
   gitOpsEnabled: false
