@@ -81,3 +81,52 @@ pipeline:
                     imageName: spring-boot-app
                     tags:
                       - v1
+    - stage:
+        name: CD Stage
+        identifier: CD_Stage
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          service:
+            serviceRef: gksvc475v1
+            serviceInputs:
+              serviceDefinition:
+                type: Kubernetes
+                spec:
+                  variables:
+                    - name: IMAGE_TAG
+                      type: String
+                      value: <+input>
+            gitBranch: main
+          environment:
+            environmentRef: gkenv475v1
+            gitBranch: main
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: gkinfra475v1
+          execution:
+            steps:
+              - step:
+                  name: Rollout Deployment
+                  identifier: rolloutDeployment
+                  type: K8sRollingDeploy
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
+                    pruningEnabled: false
+            rollbackSteps:
+              - step:
+                  name: Rollback Rollout Deployment
+                  identifier: rollbackRolloutDeployment
+                  type: K8sRollingRollback
+                  timeout: 10m
+                  spec:
+                    pruningEnabled: false
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
