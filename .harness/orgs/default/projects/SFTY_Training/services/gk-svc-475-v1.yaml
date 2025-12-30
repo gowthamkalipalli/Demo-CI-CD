@@ -1,0 +1,32 @@
+service:
+  name: gk-svc-475-v1
+  identifier: gksvc475v1
+  serviceDefinition:
+    type: Kubernetes
+    spec:
+      manifests:
+        - manifest:
+            identifier: gkk8smanifest
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: gkalipallinewgitconnector
+                  gitFetchType: Branch
+                  paths:
+                    - k8s/
+                  repoName: Demo-CI-CD
+                  branch: main
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+              optionalValuesYaml: false
+      variables:
+        - name: IMAGE_TAG
+          type: String
+          description: ""
+          required: false
+          value: <+input>
+  gitOpsEnabled: false
+  orgIdentifier: default
+  projectIdentifier: SFTY_Training
