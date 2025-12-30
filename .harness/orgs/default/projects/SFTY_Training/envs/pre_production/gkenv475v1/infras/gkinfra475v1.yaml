@@ -1,0 +1,14 @@
+infrastructureDefinition:
+  name: gk-infra-475-v1
+  identifier: gkinfra475v1
+  orgIdentifier: default
+  projectIdentifier: SFTY_Training
+  environmentRef: gkenv475v1
+  deploymentType: Kubernetes
+  type: KubernetesGcp
+  spec:
+    connectorRef: gk475gcplatestconnector
+    cluster: us-central1/harness-gke-cluster
+    namespace: default
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
