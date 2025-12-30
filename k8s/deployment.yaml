@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: springboot-app
-        image: us-central1-docker.pkg.dev/bustling-tuner-482104-a0/harness-repo/springboot-app:latest
+        image: us-central1-docker.pkg.dev/bustling-tuner-482104-a0/harness-repo/spring-boot-app:latest
         ports:
         - containerPort: 8080
         resources:
