@@ -2,7 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: springboot-app
-  namespace: default
+  labels:
+    app: springboot-app
 spec:
   replicas: 3
   selector:
@@ -15,13 +16,13 @@ spec:
     spec:
       containers:
       - name: springboot-app
-        image: us-central1-docker.pkg.dev/bustling-tuner-482104-a0/harness-repo/springboot-app:<+pipeline.variables.IMAGE_TAG>
-        imagePullPolicy: Always
+        image: us-central1-docker.pkg.dev/bustling-tuner-482104-a0/harness-repo/springboot-app:latest
         ports:
         - containerPort: 8080
-        readinessProbe:
-          httpGet:
-            path: /actuator/health
-            port: 8080
-          initialDelaySeconds: 30
-          periodSeconds: 10
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
