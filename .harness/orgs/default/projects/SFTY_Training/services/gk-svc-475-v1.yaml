@@ -40,7 +40,7 @@ service:
                 repositoryName: java-app-repo
                 package: spring-boot-app
                 version: <+pipeline.sequenceId>
-                digest: ""
+                digest: sha256:64412774103af29be16207a847f6a250e2ebc05416e9f3d4706131ff377b2c84
               type: GoogleArtifactRegistry
   gitOpsEnabled: false
   orgIdentifier: default
