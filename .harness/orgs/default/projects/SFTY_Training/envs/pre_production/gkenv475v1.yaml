@@ -1,0 +1,8 @@
+environment:
+  name: gk-env-475-v1
+  identifier: gkenv475v1
+  description: ""
+  tags: {}
+  type: PreProduction
+  orgIdentifier: default
+  projectIdentifier: SFTY_Training
