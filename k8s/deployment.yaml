@@ -14,6 +14,8 @@ spec:
       labels:
         app: springboot-app
     spec:
+      imagePullSecrets:
+        - name: gar-connection
       containers:
       - name: springboot-app
         image: us-central1-docker.pkg.dev/bustling-tuner-482104-a0/harness-repo/spring-boot-app:latest
