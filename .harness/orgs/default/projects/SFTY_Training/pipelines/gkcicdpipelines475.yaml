@@ -98,6 +98,10 @@ pipeline:
                     - name: IMAGE_TAG
                       type: String
                       value: <+input>
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
             gitBranch: main
           environment:
             environmentRef: gkenv475v1
