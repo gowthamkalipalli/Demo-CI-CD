@@ -3,7 +3,8 @@ pipeline:
   identifier: gkcicdpipelines475
   projectIdentifier: SFTY_Training
   orgIdentifier: default
-  tags: {}
+  tags:
+    ai_generated: "true"
   properties:
     ci:
       codebase:
@@ -100,8 +101,18 @@ pipeline:
                       value: <+input>
                   artifacts:
                     primary:
-                      primaryArtifactRef: <+input>
-                      sources: <+input>
+                      primaryArtifactRef: primary
+                      sources:
+                        - identifier: primary
+                          type: GoogleArtifactRegistry
+                          spec:
+                            connectorRef: gk475gcplatestconnector
+                            project: gkalipalli
+                            region: us-central1
+                            repositoryName: java-app-repo
+                            package: spring-boot-app
+                            version: v1
+                            repositoryType: docker
             gitBranch: main
           environment:
             environmentRef: gkenv475v1
@@ -145,3 +156,4 @@ pipeline:
                 - AllErrors
               action:
                 type: StageRollback
+  description: This pipeline was updated by Harness AI on 2025-12-31 05:56:29 UTC by Gowtham.
