@@ -102,17 +102,6 @@ pipeline:
                   artifacts:
                     primary:
                       primaryArtifactRef: primary
-                      sources:
-                        - identifier: primary
-                          type: GoogleArtifactRegistry
-                          spec:
-                            connectorRef: gk475gcplatestconnector
-                            project: gkalipalli
-                            region: us-central1
-                            repositoryName: java-app-repo
-                            package: spring-boot-app
-                            version: v1
-                            repositoryType: docker
             gitBranch: main
           environment:
             environmentRef: gkenv475v1
