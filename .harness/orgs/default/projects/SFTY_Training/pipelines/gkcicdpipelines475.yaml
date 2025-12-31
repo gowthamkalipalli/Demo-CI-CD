@@ -99,9 +99,6 @@ pipeline:
                     - name: IMAGE_TAG
                       type: String
                       value: <+input>
-                  artifacts:
-                    primary:
-                      primaryArtifactRef: primary
             gitBranch: main
           environment:
             environmentRef: gkenv475v1
