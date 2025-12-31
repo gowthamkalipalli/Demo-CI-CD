@@ -28,20 +28,7 @@ service:
           required: false
           value: <+input>
       artifacts:
-        primary:
-          primaryArtifactRef: <+input>
-          sources:
-            - identifier: gkartifact475
-              spec:
-                connectorRef: gk475gcplatestconnector
-                repositoryType: docker
-                project: gkalipalli
-                region: us-central1
-                repositoryName: java-app-repo
-                package: spring-boot-app
-                version: v1
-                digest: ""
-              type: GoogleArtifactRegistry
+        primary: {}
   gitOpsEnabled: false
   orgIdentifier: default
   projectIdentifier: SFTY_Training
