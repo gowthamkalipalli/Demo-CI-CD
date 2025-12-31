@@ -126,6 +126,19 @@ pipeline:
                       type: Count
                       spec:
                         count: 1
+                    trafficRouting:
+                      spec:
+                        routes:
+                          - route:
+                              type: http
+                              name: route1
+                              destinations:
+                                - destination:
+                                    host: stable
+                                - destination:
+                                    host: canary
+                        name: virtual-service-<+service.name>
+                      provider: istio
                   timeout: 10m
             rollbackSteps:
               - step:
