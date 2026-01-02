@@ -116,30 +116,6 @@ pipeline:
                   spec:
                     skipDryRun: false
                     pruningEnabled: false
-              - step:
-                  type: K8sCanaryDeploy
-                  name: K8sCanaryDeploy_1
-                  identifier: K8sCanaryDeploy_1
-                  spec:
-                    skipDryRun: false
-                    instanceSelection:
-                      type: Count
-                      spec:
-                        count: 1
-                    trafficRouting:
-                      spec:
-                        routes:
-                          - route:
-                              type: http
-                              name: route1
-                              destinations:
-                                - destination:
-                                    host: stable
-                                - destination:
-                                    host: canary
-                        name: virtual-service-<+service.name>
-                      provider: istio
-                  timeout: 10m
             rollbackSteps:
               - step:
                   name: Rollback Rollout Deployment
